@@ -2,12 +2,11 @@ namespace SpriteKind {
     export const Veggie = SpriteKind.create()
     export const Sprout = SpriteKind.create()
 }
+let groundTile: tiles.Location = null
+let groundIndex = 0
+let availableFieldTiles2: tiles.Location[] = []
 let sprout: Sprite = null
 let availableFieldTiles = tiles.getTilesByType(myTiles.tile1)
-let groundIndex = randint(0, availableFieldTiles.length -1)
-let groundTile = availableFieldTiles[groundIndex]
-tiles.placeOnTile(sprout, groundTile)
-availableFieldTiles.removeAt(groundIndex)
 let veggies = [
 img`
     . . . . . . . . . . . . . . . . 
@@ -186,4 +185,7 @@ info.player1.setScore(0)
 info.player2.setScore(0)
 game.onUpdateInterval(100, function () {
     sprout = sprites.create(sproutImg, SpriteKind.Sprout)
+  if(!sprout.overlapsWith(sprout)){
+      tiles.placeOnRandomTile(sprout, myTiles.tile1)
+  }
 })
