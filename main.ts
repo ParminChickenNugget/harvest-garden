@@ -187,5 +187,12 @@ game.onUpdateInterval(100, function () {
     sprout = sprites.create(sproutImg, SpriteKind.Sprout)
   if(!sprout.overlapsWith(sprout)){
       tiles.placeOnRandomTile(sprout, myTiles.tile1)
+      function rabbitGoAfterSprout(){
+        if(targetSprout) == null
+          // get a list of sprouts and pick a placeOnRandomTile
+        let sprouts = sprites.allOfKind(SpriteKind.Sprout)
+        let sproutIndex = randint(0, sprouts.length - 1)
+        let targetSprout = sprouts[sproutIndex]
+      }
   }
 })
